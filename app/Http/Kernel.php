@@ -43,6 +43,13 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'adminer' => [
+            // TODO: you may create customized middleware to fit your needs
+            // example uses Laravel default authentication (default protection)
+//            \Illuminate\Auth\Middleware\Authenticate::class,
+        ],
+
     ];
 
     /**
@@ -62,5 +69,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        'adminer' => \App\Http\Middleware\Authenticate::class,
     ];
 }

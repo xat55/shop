@@ -16,6 +16,7 @@
         "laravel/framework": "^8.12",
         "laravel/horizon": "^5.7",
         "laravel/tinker": "^2.5",
+        "onecentlin/laravel-adminer": "^6.0",
         "spatie/browsershot": "^3.41",
         "spatie/enum": "^3.7",
         "spatie/laravel-enum": "^2.4",
@@ -24,6 +25,7 @@
         "spatie/period": "^1.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "barryvdh/laravel-ide-helper": "^2.9",
         "brianium/paratest": "^6.2",
         "facade/ignition": "^2.5",

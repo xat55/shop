@@ -52,4 +52,12 @@ class Product extends Model
     {
         return $this->inventory->amount >= $requestedAmount;
     }
+
+    public function categories()
+    {
+        return $this
+            ->belongsToMany(ProductAttribute::class, 'product_attribute_values', 'product_id', 'attribute_id')
+            ->withPivot('value_text');
+    }
+
 }

@@ -1,5 +1,9 @@
 <?php
 
+use App\Domain\Cart\Projections\CartItem;
+use App\Domain\Product\Product;
+use App\Domain\Product\ProductAttribute;
+use App\Domain\Product\ProductAttributeValue;
 use App\Http\Controllers\Cart\AddCartItemController;
 use App\Http\Controllers\Cart\CartDetailController;
 use App\Http\Controllers\Cart\CheckoutController;
@@ -25,6 +29,102 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/query', function () {
+    $count = ProductAttributeValue::where('value_text', 'category-43')->count();
+
+    dump($count);
+});
+
+Route::get('/create', function () {
+
+//    $id = ProductAttribute::insertGetId([
+//        'name' => 'Тест',
+//        'code' => 'test',
+//        'type' => 'text',
+//    ]);
+//    dump($id);
+
+//    ProductAttribute::create([
+//        'name' => 'Категории',
+//        'code' => 'category',
+//        'type' => 'text',
+//    ]);
+//
+//    ProductAttribute::create([
+//        'name' => 'Города',
+//        'code' => 'city',
+//        'type' => 'text',
+//    ]);
+
+});
+
+Route::get('/truncate', function () {
+    $collection = Product::all();
+//    $collection = ProductAttribute::all();
+    $counter = 0;
+
+    foreach ($collection as $item) {
+        if($item->delete()) {
+            $counter++;
+        }
+    }
+
+    return "Таблица '{$collection[0]->getTable()}' успешно очищена! Удалено $counter записей";
+
+////    $class = app(ProductAttribute::class);
+//    $class = app(ProductAttributeValue::class);
+////    $class = app(Product::class);
+//    $class::truncate();
+//
+//    $tableName = $class->getTable();
+//
+//    return "Таблица '$tableName' успешно очищена!";
+
+});
+
+Route::get('/test', function () {
+
+    dump(ProductAttribute::create([
+        'name' => 'Категории',
+        'code' => 'category',
+        'type' => 'text',
+    ])->id);
+
+//    $firstId = Product::oldest('id')->value('id');
+//    dump($firstId);
+//    $endId = $firstId + 99999;
+//    dump($endId);
+
+//    $product = Product::find(1);
+//
+//    foreach ($product->categories as $item) {
+//        dump($item->pivot->value_text);
+//    }
+
+//    $category = ProductAttribute::find(2);
+//
+//    foreach ($category->products as $product) {
+//        dump($product->pivot->value_text);
+//    }
+
+//    $categories = ProductAttribute::all();
+//
+//    foreach ($categories as $category) {
+//        dump($category->name);
+//
+//        $products = $category->products/*->groupBy('value_text')->flatten()*/;
+//        dump($products);
+//
+//        $options = [];
+//
+//        foreach ($products as $product) {
+//            dump($product->pivot->value_text);
+//            $options[] = $product->pivot->value_text;
+//        }
+//        dump(array_unique($options));
+//    }
+});
 
 Route::get('/', ProductIndexController::class);
 

@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class'=>'bg-gray-100 border-l-8 border-gray-200'])->except(['title', 'price', 'action']) }}>
+<div {{ $attributes->merge(['class'=>'bg-gray-100 border-l-8 border-gray-200'])->except(['title', 'price', 'actionUrl']) }}>
     <div class="p-4 flex items-center border border-gray-100">
         <div class="w-16 h-16 bg-white flex items-center justify-center border border-gray-300">
             <x-logo-outline class="w-8 h-8"/>
